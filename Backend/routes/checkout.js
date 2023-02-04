@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../models/ProductSchema');
 const User = require('../models/UserSchema');
-const { body, validationResult } = require('express-validator');
 const dotenv = require("dotenv");
 dotenv.config();
 const authorization = require('../middleware/authorization');
@@ -21,6 +20,8 @@ router.get('/getProducts', authorization, async (req, res) => {
         res.status(500).send("Server Error");
     }
 })
+
+
 
 
 
