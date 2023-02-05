@@ -57,11 +57,14 @@ const ProductState = (props) => {
 
         let newProducts = JSON.parse(JSON.stringify(products));
         for (let product in newProducts) {
-            if (title) product.title = title;
-            if (description) product.description = description;
-            if (category) product.category = category;
-            if (imageUrl) product.imageUrl = imageUrl;
-            break;
+            if (product._id === id) {
+                if (title) product.title = title;
+                if (description) product.description = description;
+                if (category) product.category = category;
+                if (imageUrl) product.imageUrl = imageUrl;
+                break;
+            }
+
         }
 
         setProducts(newProducts);
@@ -81,8 +84,11 @@ const ProductState = (props) => {
             },
         });
 
-        const newProduct = await response.json();
-        setProducts(products.concat(newProduct));
+        const json = await response.json();
+        console.log(`Deleted response: ${json}`)
+
+        const newProducts = products.filter((product) => { return product._id !== id })
+        setProducts(newProducts);
     }
 
 
