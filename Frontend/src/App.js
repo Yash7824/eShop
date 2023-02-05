@@ -12,7 +12,6 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/register" element={<Register />} />
-
           </Routes>
         </BrowserRouter>
       </ProductState>
